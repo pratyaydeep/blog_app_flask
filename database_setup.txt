@@ -1,0 +1,73 @@
+$ python
+>>> from flaskblog import db
+>>> db.create_all()
+>>> from flaskblog import User, Post
+>>> user_1 = User(username='Patty', email='P@demo.com', password='password')
+>>> db.session.add(user_1)
+>>> user_2 = User(username='Prty', email='P@ddemo.com', password='password')
+>>> db.session.add(user_2)
+>>> db.session.commit()
+
+
+>>> User.query.all()
+[User('Patty', 'P@demo.com', 'default.jpg'), User('Prty', 'P@ddemo.com', 'default.jpg')]
+>>> User.query.first()
+User('Patty', 'P@demo.com', 'default.jpg')
+>>> User.query.first().id
+1
+>>> User.query.filter_by(username='Prty').all()
+[User('Prty', 'P@ddemo.com', 'default.jpg')]
+>>> User.query.filter_by(username='Prty').first()
+User('Prty', 'P@ddemo.com', 'default.jpg')
+>>> user = User.query.filter_by(username='Prty').all()
+>>> user
+[User('Prty', 'P@ddemo.com', 'default.jpg')]
+>>> user.id
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+AttributeError: 'list' object has no attribute 'id'
+>>> user = User.query.filter_by(username='Prty').first()
+>>> user.id
+2
+>>> user = User.query.get(2)
+>>> user
+User('Prty', 'P@ddemo.com', 'default.jpg')
+>>> user.posts
+[]
+>>> user.id
+2
+>>> post_1 = Post(title='Blog 1', content='First Post Content', user_id=user.id)
+>>> post_1
+Post('Blog 1', 'None')
+>>> post_2 = Post(title='Blog 2', content='Second Post Content', user_id=user.id)
+>>> db.session.add(post_1)
+>>> db.session.add(post_2)
+>>> db.session.commit()
+>>> post_2
+Post('Blog 2', '2021-06-17 18:27:15.029776')
+>>> post_1
+Post('Blog 1', '2021-06-17 18:27:15.026768')
+>>> user.posts
+[Post('Blog 1', '2021-06-17 18:27:15.026768'), Post('Blog 2', '2021-06-17 18:27:15.029776')]
+>>> for post in user.posts:
+...     print(post)
+...
+Post('Blog 1', '2021-06-17 18:27:15.026768')
+Post('Blog 2', '2021-06-17 18:27:15.029776')
+>>> post = Post.query.first()
+>>> post.user_id
+2
+>>> post.author
+User('Prty', 'P@ddemo.com', 'default.jpg')
+>>>
+
+
+>>> db.drop_all()
+
+
+>>> db.create_all()
+>>> User.query.all()
+[]
+>>> Post.query.all()
+[]
+>>>
