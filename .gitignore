@@ -1,2 +1,4 @@
 .env
 command_history.txt
+__pycache__
+database_setup.txt

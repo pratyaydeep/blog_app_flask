@@ -71,3 +71,21 @@ User('Prty', 'P@ddemo.com', 'default.jpg')
 >>> Post.query.all()
 []
 >>>
+
+
+
+
+
+##after changinh file structure
+
+
+Owner@DESKTOP-8ULE81L MINGW64 /d/#projects/blog_app (master)
+$ python
+Python 3.9.5 (tags/v3.9.5:0a7dcbd, May  3 2021, 17:27:52) [MSC v.1928 64 bit (AMD64)] on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> from flaskblog import db
+C:\Python39\lib\site-packages\flask_sqlalchemy\__init__.py:872: FSADeprecationWarning: SQLALCHEMY_TRACK_MODIFICATIONS adds significant overhead and will be disabled by default in the future.  Set it to True or False to suppress this warning.
+  warnings.warn(FSADeprecationWarning(
+>>> from flaskblog.models import User, Post
+>>> db.create_all()
+>>>
