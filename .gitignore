@@ -2,3 +2,4 @@
 command_history.txt
 __pycache__
 database_setup.txt
+flaskblog/__pycache__
