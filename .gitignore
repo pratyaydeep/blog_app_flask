@@ -1,4 +1,5 @@
 .env
+bcrypt_basics.txt
 command_history.txt
 __pycache__
 database_setup.txt
