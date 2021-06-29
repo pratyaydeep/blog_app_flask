@@ -1,6 +1,7 @@
 .env
 bcrypt_basics.txt
 command_history.txt
+tokenizer.txt
 __pycache__
 database_setup.txt
 flaskblog/__pycache__
